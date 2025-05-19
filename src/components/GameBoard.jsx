@@ -5,14 +5,27 @@ export default function GameBoard() {
 	const [items, setItems] = useState([]);
 	const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
+	//pokeapi.co/api/v2/pokemon?offset=20&limit=12
+
+	//const data = {};
+
+	/* async function handleCardLoad() {
+		try {
+			const response = await fetch();
+		} catch (error) {
+			console.error(error);
+		}
+	} */
+
 	useEffect(() => {
-		fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+		fetch('https://pokeapi.co/api/v2/pokemon?offset=20&limit=12')
 			.then((res) => res.json())
 			.then((json) => {
 				setItems(json);
 				setDataIsLoaded(true);
 			});
 	}, []);
+
 	if (!dataIsLoaded) {
 		return (
 			<div>
@@ -23,7 +36,7 @@ export default function GameBoard() {
 
 	return (
 		<div className="game-board">
-			{console.log(items)}
+			{/* <Card itemsObj={items} />
 			<Card itemsObj={items} />
 			<Card itemsObj={items} />
 			<Card itemsObj={items} />
@@ -34,8 +47,7 @@ export default function GameBoard() {
 			<Card itemsObj={items} />
 			<Card itemsObj={items} />
 			<Card itemsObj={items} />
-			<Card itemsObj={items} />
-			<Card itemsObj={items} />
+			<Card itemsObj={items} /> */}
 		</div>
 	);
 }
