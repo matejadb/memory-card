@@ -1,8 +1,8 @@
-export default function Card({ itemsObj }) {
+export default function Card({ name, imageLink }) {
 	return (
 		<div className="card">
-			<img src={itemsObj.sprites.front_default} alt="card-image" />
-			<h2>{itemsObj.name}</h2>
+			<img src={imageLink} alt={name + '-avatar'} />
+			<h2>{name}</h2>
 		</div>
 	);
 }

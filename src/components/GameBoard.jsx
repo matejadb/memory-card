@@ -2,26 +2,32 @@ import { useEffect, useState } from 'react';
 import Card from './Card';
 
 export default function GameBoard() {
-	const [items, setItems] = useState([]);
+	const [pokemons, setPokemons] = useState([]);
 	const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
-	//pokeapi.co/api/v2/pokemon?offset=20&limit=12
+	//https://pokeapi.co/api/v2/pokemon?offset=20&limit=12
 
-	//const data = {};
-
-	/* async function handleCardLoad() {
-		try {
-			const response = await fetch();
-		} catch (error) {
-			console.error(error);
+	function shuffleArray(arr) {
+		const newArray = [...arr];
+		for (let i = arr.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[newArray[i], newArray[j]] = [newArray[j], newArray[i]];
 		}
-	} */
+
+		return newArray;
+	}
 
 	useEffect(() => {
 		fetch('https://pokeapi.co/api/v2/pokemon?offset=20&limit=12')
 			.then((res) => res.json())
-			.then((json) => {
-				setItems(json);
+			.then(async (data) => {
+				const detailedData = await Promise.all(
+					data.results.map((pokemon) =>
+						fetch(pokemon.url).then((res) => res.json())
+					)
+				);
+
+				setPokemons(shuffleArray(detailedData));
 				setDataIsLoaded(true);
 			});
 	}, []);
@@ -36,18 +42,13 @@ export default function GameBoard() {
 
 	return (
 		<div className="game-board">
-			{/* <Card itemsObj={items} />
-			<Card itemsObj={items} />
-			<Card itemsObj={items} />
-			<Card itemsObj={items} />
-			<Card itemsObj={items} />
-			<Card itemsObj={items} />
-			<Card itemsObj={items} />
-			<Card itemsObj={items} />
-			<Card itemsObj={items} />
-			<Card itemsObj={items} />
-			<Card itemsObj={items} />
-			<Card itemsObj={items} /> */}
+			{pokemons.map((pokemon) => (
+				<Card
+					name={pokemon.name}
+					imageLink={pokemon.sprites.front_default}
+					key={pokemon.name}
+				/>
+			))}
 		</div>
 	);
 }
