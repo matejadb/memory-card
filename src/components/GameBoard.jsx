@@ -4,8 +4,7 @@ import Card from './Card';
 export default function GameBoard() {
 	const [pokemons, setPokemons] = useState([]);
 	const [dataIsLoaded, setDataIsLoaded] = useState(false);
-
-	//https://pokeapi.co/api/v2/pokemon?offset=20&limit=12
+	//const [isClicked, setIsClicked] = useState(false);
 
 	function shuffleArray(arr) {
 		const newArray = [...arr];
@@ -34,7 +33,7 @@ export default function GameBoard() {
 
 	if (!dataIsLoaded) {
 		return (
-			<div>
+			<div className="loading">
 				<h1>Loading. Please wait . . .</h1>
 			</div>
 		);

@@ -59,3 +59,11 @@
 	-ms-transform: scale(1.05);
 	transform: scale(1.05);
 }
+
+/* Loading */
+
+.loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
