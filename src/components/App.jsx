@@ -1,3 +1,13 @@
+import Header from './Header';
+import Description from './Description';
+import GameBoard from './GameBoard';
+
 export default function App() {
-	return <h1>Test</h1>;
+	return (
+		<div className="container">
+			<Header />
+			<Description />
+			<GameBoard />
+		</div>
+	);
 }
