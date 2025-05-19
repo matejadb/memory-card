@@ -23,6 +23,7 @@ export default function GameBoard() {
 
 	return (
 		<div className="game-board">
+			{console.log(items)}
 			<Card itemsObj={items} />
 			<Card itemsObj={items} />
 			<Card itemsObj={items} />
