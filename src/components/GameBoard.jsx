@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react';
 import Card from './Card';
 
-export default function GameBoard() {
+export default function GameBoard({
+	onSetScore,
+	onSetHighScore,
+	score,
+	highScore,
+}) {
 	const [pokemons, setPokemons] = useState([]);
 	const [dataIsLoaded, setDataIsLoaded] = useState(false);
-	//const [isClicked, setIsClicked] = useState(false);
+	const [clickedPokemon, setClickedPokemon] = useState([]);
 
 	function shuffleArray(arr) {
 		const newArray = [...arr];
@@ -46,6 +51,15 @@ export default function GameBoard() {
 					name={pokemon.name}
 					imageLink={pokemon.sprites.front_default}
 					key={pokemon.name}
+					score={score}
+					highScore={highScore}
+					onSetScore={onSetScore}
+					onSetHighScore={onSetHighScore}
+					shuffle={shuffleArray}
+					clickedPokemon={clickedPokemon}
+					setClickedPokemon={setClickedPokemon}
+					pokemonsArr={pokemons}
+					onSetPokemons={setPokemons}
 				/>
 			))}
 		</div>
