@@ -6,10 +6,11 @@ export default function GameBoard({
 	onSetHighScore,
 	score,
 	highScore,
+	onSetClickedPokemon,
+	clickedPokemon,
 }) {
 	const [pokemons, setPokemons] = useState([]);
 	const [dataIsLoaded, setDataIsLoaded] = useState(false);
-	const [clickedPokemon, setClickedPokemon] = useState([]);
 
 	function shuffleArray(arr) {
 		const newArray = [...arr];
@@ -57,7 +58,7 @@ export default function GameBoard({
 					onSetHighScore={onSetHighScore}
 					shuffle={shuffleArray}
 					clickedPokemon={clickedPokemon}
-					setClickedPokemon={setClickedPokemon}
+					onSetClickedPokemon={onSetClickedPokemon}
 					pokemonsArr={pokemons}
 					onSetPokemons={setPokemons}
 				/>

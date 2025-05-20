@@ -7,7 +7,7 @@ export default function Card({
 	onSetHighScore,
 	shuffle,
 	clickedPokemon,
-	setClickedPokemon,
+	onSetClickedPokemon,
 	pokemonsArr,
 	onSetPokemons,
 }) {
@@ -18,14 +18,14 @@ export default function Card({
 	const handleCardClick = () => {
 		if (!clickedPokemon.includes(name)) {
 			onSetScore((s) => s + 1);
-			setClickedPokemon([...clickedPokemon, name]);
+			onSetClickedPokemon([...clickedPokemon, name]);
 			onSetPokemons(shuffle(pokemonsArr));
 		} else {
 			if (score > highScore) {
 				onSetHighScore(score);
 			}
 			onSetScore(0);
-			setClickedPokemon([]);
+			onSetClickedPokemon([]);
 		}
 	};
 
