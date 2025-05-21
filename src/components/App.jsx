@@ -9,16 +9,18 @@ export default function App() {
 	const [highScore, setHighScore] = useState(0);
 	const [clickedPokemon, setClickedPokemon] = useState([]);
 
+	const handleReset = () => {
+		setScore(0);
+		setHighScore(0);
+		setClickedPokemon([]);
+	};
+
 	return (
 		<div className="container">
 			<Header score={score} highScore={highScore} />
 			<Description />
 			{score === 12 ? (
-				<End
-					onSetClickedPokemon={setClickedPokemon}
-					onSetHighScore={setHighScore}
-					onSetScore={setScore}
-				/>
+				<End handleReset={handleReset} />
 			) : (
 				<GameBoard
 					onSetScore={setScore}

@@ -1,14 +1,4 @@
-export default function End({
-	onSetClickedPokemon,
-	onSetScore,
-	onSetHighScore,
-}) {
-	const handleReset = () => {
-		onSetClickedPokemon([]);
-		onSetScore(0);
-		onSetHighScore(0);
-	};
-
+export default function End({ handleReset }) {
 	return (
 		<div className="game-won">
 			<h1>You won the game!</h1>
